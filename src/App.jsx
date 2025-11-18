@@ -1,4 +1,4 @@
-import "./firebase.js";
+import "./firebaseConfig.js";
 import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import HeaderBar from "./components/HeaderBar";
