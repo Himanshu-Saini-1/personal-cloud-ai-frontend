@@ -117,8 +117,14 @@ export default function FileCardGrid({ refreshKey }) {
       const res = await api.get(`/files/download/${fileId}`);
       const meta = res.data;
 
-      const encResp = await fetch(meta.downloadUrl);
-      const encBytes = new Uint8Array(await encResp.arrayBuffer());
+      // const encResp = await fetch(meta.downloadUrl);
+      // const encBytes = new Uint8Array(await encResp.arrayBuffer());
+
+      const encResp = await api.get(`/files/raw/${fileId}`, {
+        responseType: "arraybuffer",
+      });
+
+      const encBytes = new Uint8Array(encResp.data);
 
       const privatePem = getOwnPrivateKeyPem();
       if (!privatePem) return alert("Your private key is missing.");
