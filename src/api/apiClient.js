@@ -1,8 +1,10 @@
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 
+const apiBaseURL = import.meta.env.VITE_API_BASE_URL;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: `${apiBaseURL}/api`,
 });
 
 api.interceptors.request.use(async (config) => {
