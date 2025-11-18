@@ -1,0 +1,10 @@
+body {
+  font-family: system-ui, Arial, sans-serif;
+}
+button {
+  cursor: pointer;
+  padding: 6px 10px;
+}
+textarea {
+  font-family: monospace;
+}

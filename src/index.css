@@ -1,0 +1,232 @@
+/* :root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+:root {
+  --accent: #244855;
+  --accent-2: #e64833;
+  --bg: #f8f9fa;
+  --card-bg: #fff;
+  --muted: #666;
+}
+
+/* Reset-ish */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #111;
+}
+
+/* Header */
+.pca-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Layout */
+.pca-layout {
+  display: flex;
+  min-height: calc(100vh - 56px); /* minus header */
+}
+
+/* Sidebar */
+.pca-sidebar {
+  width: 240px;
+  background: var(--accent);
+  color: #fff;
+  padding: 18px 12px;
+  min-height: calc(100vh - 56px);
+  position: sticky;
+  top: 56px;
+}
+.pca-sidebar .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.pca-sidebar .nav-item.active {
+  background: var(--accent-2);
+  color: #fff;
+}
+
+/* Main content */
+.pca-main {
+  flex: 1;
+  padding: 22px;
+}
+
+/* File card grid */
+.pca-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* File card */
+.pca-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  min-height: 120px;
+}
+
+/* card hover controls */
+.pca-card-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* mobile-friendly buttons */
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-danger {
+  background: var(--accent-2);
+  color: #fff;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .pca-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pca-sidebar {
+    width: 200px;
+  }
+}
+
+@media (max-width: 720px) {
+  .pca-layout {
+    flex-direction: column;
+  }
+  .pca-sidebar {
+    display: none;
+  } /* hidden by default on mobile; toggled via JS */
+  .pca-main {
+    padding: 16px;
+  }
+  .pca-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .pca-header {
+    padding: 10px;
+  }
+  .hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+  }
+}
+
+/* make file name wrap nicely */
+.file-name {
+  font-weight: 700;
+  color: var(--accent);
+  word-break: break-word;
+}
